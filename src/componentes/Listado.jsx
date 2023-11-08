@@ -3,22 +3,39 @@ import {useFetch} from '../custom/useFetch';
 
 function Listado(){
   const {data: tareaData} = useFetch("#"); 
+  const [listadoTarea,setListadoTarea] = useState(false);
+  const [encabezadoListadoTarea,setEncabezadoListadoTarea] = useState(false);
+
+   const inicializar = () =>{
+    //filas
+    setListadoTarea(false);
+
+    //encabezados
+    setEncabezadoListadoTarea(false);
+  }
   
+  //tarea
+  const listarTarea = () =>{
+    inicializar();
+    setListadoTarea(true);
+    setEncabezadoListadoTarea(true);
+  }
+
   return (
     <div className="navListar">
-      <button>Listar tarea</button>
+      <button onClick={listarTarea}>Listar tarea</button>
 
       {
-       <div className='encabezadoProducto'>
+       encabezadoListadoTarea && <div>
           <div>Titulo</div>
           <div>IdAutor</div>
           <div>IdUsuario</div>
           <div>cuerpo</div>
           <div>categorias</div>
         </div>
-      }
+      }    
       {
-        tareaData?.map((tarea) => (
+        listadoTarea && tareaData?.map((tarea) => (
         <div key={tarea.id} className='listdo'>
           <div>{tarea.nombre}</div>
           <div>{tarea.tipo}</div>
