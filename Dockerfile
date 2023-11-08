@@ -1,25 +1,20 @@
-# Usa una imagen base con Node.js
+# Base image
 FROM node:14
 
-# Establece el directorio de trabajo dentro del contenedor
+# Set the working directory
 WORKDIR /app
 
-# Copia el archivo package.json e package-lock.json (si existe)
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Instala las dependencias
+# Install dependencies
 RUN npm install
 
-# Copia el resto de los archivos de la aplicación
+# Copy the rest of the application code
 COPY . .
 
-# Compila la aplicación
-RUN npm run build
-
-# Expone el puerto 3000 (o el puerto que uses en tu aplicación React)
+# Expose port 3000
 EXPOSE 3000
 
-# Comando para ejecutar la aplicación cuando el contenedor se inicia
+# Start the application
 CMD ["npm", "start"]
-
-
