@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Listado from './componentes/Listado';
 import NavBotones from './componentes/NavBotones';
+import FormularioTarea from './componentes/FormularioTarea';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       </header>
       {listadoDeTareas && <Listado tareas="true" />}
       {listadoDeUsuarios && <Listado usuarios="true" />}
+      {formularioTarea && <FormularioTarea />}
     </div>
   );
 }
