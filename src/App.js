@@ -3,6 +3,7 @@ import Listado from './componentes/Listado';
 import NavBotones from './componentes/NavBotones';
 import FormularioTarea from './componentes/FormularioTarea';
 import FormularioRegistroUsuario from './componentes/FormularioRegistroUsuario';
+import Login from './componentes/Login';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
       {listadoDeUsuarios && <Listado usuarios="true" />}
       {formularioTarea && <FormularioTarea />}
       {formularioRegistrarUsuario && <FormularioRegistroUsuario />}
+      {login && <Login />}
     </div>
   );
 }
