@@ -1,5 +1,5 @@
-import '../estilos/estilos.css';
 import {useFetch} from '../custom/useFetch';
+import { useState } from 'react';
 
 function Listado(){
   const {data: tareaData} = useFetch("#"); 
