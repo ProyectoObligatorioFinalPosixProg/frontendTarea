@@ -25,7 +25,8 @@ function App() {
           <NavBotones click={logicaNavaLoQueSeVe} />
         </nav>
       </header>
-      {listadoDeTareas && <Listado />}
+      {listadoDeTareas && <Listado tareas="true" />}
+      {listadoDeUsuarios && <Listado usuarios="true" />}
     </div>
   );
 }
