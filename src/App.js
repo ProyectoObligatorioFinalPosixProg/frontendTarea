@@ -7,11 +7,13 @@ function App() {
   const [formularioTarea,setFormularioTarea] = useState(false); 
   const [formularioRegistrarUsuario,setFormularioRegistrarUsuario] = useState(false);
   const [listadoDeTareas,setFormularioListadoDeTareas] = useState(false);
+  const [listadoDeUsuarios,setListadoDeUsuarios] = useState(false);
   
-  const logicaNavaLoQueSeVe = (tarea, usuario, listadoTarea)=>{
+  const logicaNavaLoQueSeVe = (tarea, usuario, listadoTareas, listadoUsuarios)=>{
     setFormularioTarea(tarea);
     setFormularioRegistrarUsuario(usuario);
-    setFormularioListadoDeTareas(listadoTarea)
+    setFormularioListadoDeTareas(listadoTareas);
+    setListadoDeUsuarios(listadoUsuarios);
   }  
 
   return (
