@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Login(){
-    const capturarValoresFormulario= ()=>{
+function Login() {
+    const capturarValoresFormulario = () => {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         let formularioData = {
@@ -11,28 +11,28 @@ function Login(){
         return formularioData;
     }
 
-    const onSubmit = (event) =>{
+    const onSubmit = (event) => {
         event.preventDefault();
 
         fetch('#', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(capturarValoresFormulario()),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(capturarValoresFormulario()),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Usuario creado:', data);
-            alert("Fue creado con exito");
-            window.location.reload();
-        })
-        .catch(error => console.error('Error creando usuario:', error));
+            .then(response => response.json())
+            .then(data => {
+                console.log('Usuario creado:', data);
+                alert("Fue creado con exito");
+                window.location.reload();
+            })
+            .catch(error => console.error('Error creando usuario:', error));
     }
-    return(
+    return (
         <form onSubmit={onSubmit}>
-            Email: <input type="text" id="email" /> 
-            Password: <input type="text" id="password" /> 
+            Email: <input type="text" id="email" />
+            Password: <input type="text" id="password" />
         </form>
     )
 }
