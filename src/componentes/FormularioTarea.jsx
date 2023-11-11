@@ -8,11 +8,11 @@ function FormularioTarea(){
         const categorias = document.getElementById(categorias);
         const fechaDeCreacion = document.getElementById(fechaDeCreacion);
         let formularioData = {
-            idAutor,
-            idUsuario,
-            cuerpo,
-            categorias,
-            fechaDeCreacion
+            idAutor: idAutor,
+            idUsuario: idUsuario,
+            cuerpo: cuerpo,
+            categorias: categorias,
+            fechaDeCreacion: fechaDeCreacion
         }
         return formularioData;
     }

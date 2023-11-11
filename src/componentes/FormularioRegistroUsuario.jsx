@@ -7,10 +7,10 @@ function FormularioRegistroUsuario(){
         const password = document.getElementById(password);
         const confirmarPassword = document.getElementById(confirmarPassword);
         let formularioData = {
-            nombre,
-            email,
-            password,
-            confirmarPassword
+            nombre: nombre,
+            email: email,
+            password: password,
+            confirmarPassword: confirmarPassword
         }
         return formularioData;
     }
