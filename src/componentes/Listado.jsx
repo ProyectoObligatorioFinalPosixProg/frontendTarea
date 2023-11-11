@@ -36,6 +36,7 @@ function Listado({ tareas, usuarios }) {
   }
 
   const [tarea, setTarea] = useState({});
+  const [usuario, setUsuario] = useState({});
  
   return (
     <div className="navListar">
@@ -94,12 +95,18 @@ function Listado({ tareas, usuarios }) {
                 <td>{usuario.nombre}</td>
                 <td>{usuario.email}</td>
                 <td onClick={() => eliminarUsuario(usuario.id)}>Eliminar</td>
+                <td><button
+                 onClick={() => setUsuario(usuario)}>Modificar</button></td>
               </tr>
             ))
           }
         </tbody>
       </table>
-
+      <ModificarTarea
+        idUsuario={usuario.id}
+        nombre={usuario.nombre}
+        email={usuario.email}
+       />
 
     </div>
   );

@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
-function ModificarTarea({ idTarea, titulo, idAutor, idUsuario, cuerpo, categorias }) {
+function ModificarTarea({ idUsuario, nombre, email}) {
     const [formularioData, setFormularioData] = useState({
-        titulo: "",
-        idautor: "",
-        idusuario: "",
-        cuerpo: "",
-        categorias: ""
+        nombre: "",
+        email: "",
+        password: ""
     });
 
     // Utilizar useEffect para actualizar el estado cuando las propiedades cambien
     useEffect(() => {
         setFormularioData({
-            titulo: titulo || "",
-            idautor: idAutor || "",
-            idusuario: idUsuario || "",
-            cuerpo: cuerpo || "",
-            categorias: categorias || ""
+            nombre: nombre || "",
+            email: email || "",
+            password: password || ""
         });
-    }, [idTarea, titulo, idAutor, idUsuario, cuerpo, categorias]);
+    }, [idUsuario, nombre, email]);
 
     const onChange = event => {
         const { name, value } = event.target;
@@ -39,7 +35,7 @@ function ModificarTarea({ idTarea, titulo, idAutor, idUsuario, cuerpo, categoria
         })
             .then(response => response.json())
             .then(data => {
-                alert("La tarea fue modificada con éxito");
+                alert("El usuario fue modificada con éxito");
                 window.location.reload();
             })
             .catch(error => console.error('Error modificando elemento:', error));
@@ -47,11 +43,9 @@ function ModificarTarea({ idTarea, titulo, idAutor, idUsuario, cuerpo, categoria
 
     return (
         <form onSubmit={onSubmit}>
-            Titulo: <input type="text" value={formularioData.titulo} onChange={onChange} name="titulo" />
-            IdAutor: <input type="text" value={formularioData.idautor} onChange={onChange} name="idautor" />
-            IdUsuario: <input type="text" value={formularioData.idusuario} onChange={onChange} name="idusuario" />
-            Cuerpo: <input type="text" value={formularioData.cuerpo} onChange={onChange} name="cuerpo" />
-            Categorias: <input type="text" value={formularioData.categorias} onChange={onChange} name="categorias" />
+            Nombre: <input type="text" value={formularioData.nombre} onChange={onChange} name="nombre" />
+            Email: <input type="text" value={formularioData.email} onChange={onChange} name="email" />
+            Password: <input type="text" value={formularioData.password} onChange={onChange} name="password" />
             <button type='submit'>Guardar</button>
         </form>
     );
