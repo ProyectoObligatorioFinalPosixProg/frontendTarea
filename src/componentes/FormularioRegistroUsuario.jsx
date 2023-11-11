@@ -2,15 +2,15 @@ import React from 'react';
 
 function FormularioRegistroUsuario(){
     const capturarValoresFormulario= ()=>{
-        const nombre = document.getElementById(nombre);
-        const email = document.getElementById(email);
-        const password = document.getElementById(password);
-        const confirmarPassword = document.getElementById(confirmarPassword);
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmarPassword = document.getElementById('confirmarPassword').value;
         let formularioData = {
             nombre: nombre,
             email: email,
             password: password,
-            confirmarPassword: confirmarPassword
+            password_confirmation: confirmarPassword
         }
         return formularioData;
     }
