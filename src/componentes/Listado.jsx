@@ -1,5 +1,6 @@
 import { useFetch } from '../custom/useFetch';
 import { useState } from 'react';
+import ModificarTarea from './ModificarTarea';
 
 function Listado({ tareas, usuarios }) {
   const { data: tareaData } = useFetch("http://127.0.0.1:8001/api/v1/tarea");
@@ -19,7 +20,6 @@ function Listado({ tareas, usuarios }) {
       })
       .catch(error => console.log(error));
   }
-
   const eliminarUsuario = (idUsuario) => {
     fetch(`http://127.0.0.1:8001/api/v1/tarea/${idUsuario}`, {
       method: 'delete',
@@ -34,6 +34,9 @@ function Listado({ tareas, usuarios }) {
       })
       .catch(error => console.log(error));
   }
+
+  const [tarea, setTarea] = useState({});
+ 
   return (
     <div className="navListar">
 
@@ -58,13 +61,22 @@ function Listado({ tareas, usuarios }) {
                 <td>{tarea.idusuario}</td>
                 <td>{tarea.cuerpo}</td>
                 <td>{tarea.categorias}</td>
-                <td><button onClick={() => eliminarTarea(tarea.id)} id="eliminar">Eliminar</button></td>
+                <td><button onClick={() => eliminarTarea(tarea.id)}>Eliminar</button></td>
+                <td><button
+                 onClick={() => setTarea(tarea)}>Modificar</button></td>
               </tr>
             ))
           }
         </tbody>
       </table>
-
+      <ModificarTarea
+        idTarea={tarea.id}
+        titulo={tarea.titulo}
+        idAutor={tarea.idautor}
+        idUsuario={tarea.idusuario}
+        cuerpo={tarea.cuerpo}
+        categorias={tarea.categorias}
+       />
       <table border="1">
         {
           usuarios && <thead>
