@@ -2,17 +2,17 @@ import React from 'react';
 
 function FormularioTarea(){
     const capturarValoresFormulario= ()=>{
-        const idAutor = document.getElementById(idAutor);
-        const idUsuario = document.getElementById(idUsuario);
-        const cuerpo = document.getElementById(cuerpo);
-        const categorias = document.getElementById(categorias);
-        const fechaDeCreacion = document.getElementById(fechaDeCreacion);
+        const titulo = document.getElementById('titulo').value;
+        const idAutor = document.getElementById('idAutor').value;
+        const idUsuario = document.getElementById('idUsuario').value;
+        const cuerpo = document.getElementById('cuerpo').value;
+        const categorias = document.getElementById('categorias').value;
         let formularioData = {
-            idAutor: idAutor,
-            idUsuario: idUsuario,
+            titulo: titulo,
+            idautor: idAutor,
+            idusuario: idUsuario,
             cuerpo: cuerpo,
             categorias: categorias,
-            fechaDeCreacion: fechaDeCreacion
         }
         return formularioData;
     }
@@ -20,7 +20,7 @@ function FormularioTarea(){
     const onSubmit = (event) =>{
         event.preventDefault();
 
-        fetch('#', {
+        fetch('http://127.0.0.1:8001/api/v1/tarea', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -38,11 +38,12 @@ function FormularioTarea(){
 
     return(
         <form onSubmit={onSubmit}>
+            Título: <input type="text" id="titulo" />
             IdAutor: <input type="text" id="idAutor" />
             IdUsuario: <input type="text" id="idUsuario" /> 
             Cuerpo: <input type="text" id="cuerpo" /> 
-            Categorias: <input type="text" id="categorias" /> 
-            Fecha de creación: <input type="text" id="fechaDeCreacion" /> 
+            Categorias: <input type="text" id="categorias" />
+            <button type='submit'>Enviar</button>
         </form>
     )
 }
