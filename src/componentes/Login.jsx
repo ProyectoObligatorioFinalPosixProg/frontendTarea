@@ -2,11 +2,11 @@ import React from 'react';
 
 function Login(){
     const capturarValoresFormulario= ()=>{
-        const email = document.getElementById(email);
-        const password = document.getElementById(password);
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
         let formularioData = {
-            email,
-            password,
+            email: email,
+            password: password
         }
         return formularioData;
     }
