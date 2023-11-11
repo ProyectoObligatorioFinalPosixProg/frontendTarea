@@ -5,6 +5,20 @@ function Listado({tareas,usuarios}){
   const {data: tareaData} = useFetch("http://127.0.0.1:8001/api/v1/tarea"); 
   const {data: usuarioData} = useFetch("#"); 
 
+  const eliminarTarea = (idTarea)=>{
+        fetch(`http://127.0.0.1:8001/api/v1/tarea/${idTarea}`,{
+            method: 'delete',
+            headers: {
+                'content-type':'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data =>{
+            alert("La tarea fue eliminada");
+            window.location.reload();
+        })
+        .catch(error=>console.log(error));
+    }
   return (
     <div className="navListar">
 
@@ -29,6 +43,7 @@ function Listado({tareas,usuarios}){
           <td>{tarea.idusuario}</td>
           <td>{tarea.cuerpo}</td>
           <td>{tarea.categorias}</td>
+          <td><button onClick={()=>eliminarTarea(tarea.id)} id="eliminar">Eliminar</button></td>
         </tr>
         ))
       }
