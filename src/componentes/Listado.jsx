@@ -19,6 +19,21 @@ function Listado({tareas,usuarios}){
         })
         .catch(error=>console.log(error));
     }
+
+    const eliminarUsuario = (idUsuario)=>{
+        fetch(`http://127.0.0.1:8001/api/v1/tarea/${idUsuario}`,{
+            method: 'delete',
+            headers: {
+                'content-type':'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data =>{
+            alert("El usuario fue eliminada");
+            window.location.reload();
+        })
+        .catch(error=>console.log(error));
+    }
   return (
     <div className="navListar">
 
@@ -66,6 +81,7 @@ function Listado({tareas,usuarios}){
           <div></div>
           <td>{usuario.nombre}</td>
           <td>{usuario.email}</td>
+          <td onClick={()=>eliminarUsuario(usuario.id)}>Eliminar</td>
         </tr>
         ))
       }
