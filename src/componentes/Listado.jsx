@@ -4,7 +4,7 @@ import ModificarTarea from './ModificarTarea';
 
 function Listado({ tareas, usuarios }) {
   const { data: tareaData } = useFetch("http://127.0.0.1:8001/api/v1/tarea");
-  const { data: usuarioData } = useFetch("#");
+  const { data: usuarioData } = useFetch("http://localhost:8003/api/v1/user/");
 
   const eliminarTarea = (idTarea) => {
     fetch(`http://127.0.0.1:8001/api/v1/tarea/${idTarea}`, {
